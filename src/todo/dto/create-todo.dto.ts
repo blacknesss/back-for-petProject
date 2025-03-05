@@ -1,3 +1,4 @@
 export class CreateTodoDto {
-    task: string
+    task: string;
+    complete: boolean;
 }
