@@ -7,13 +7,34 @@ import { CreateTodoDto } from './dto/create-todo.dto';
 export class TodoService {
   constructor(private readonly prisma:PrismaService){}
 
-  findAll() {
+  async findAll() {
     return this.prisma.todo.findMany()
   }
 
-  create(dto: CreateTodoDto){
+  async create(dto: CreateTodoDto){
     return this.prisma.todo.create({
       data: dto,
+    })
+  }
+
+  async changeData(body, id){
+    return await this.prisma.todo.update({
+      where: {id: Number(id)},
+      data: {task: body.task}
+    })
+  }
+
+  async deleteData(id){
+    await this.prisma.todo.delete({
+      where: {id: Number(id)},
+    })
+    return {message: 'task deleted'}
+  }
+
+  async changeComplete(body, id){
+    return await this.prisma.todo.update({
+      where: {id: Number(id)},
+      data: {complete: body.complete}
     })
   }
 }
