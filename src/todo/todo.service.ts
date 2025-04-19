@@ -37,4 +37,10 @@ export class TodoService {
       data: {complete: body.complete}
     })
   }
+  async changeBoard(body, id){
+    return await this.prisma.todo.update({
+      where: {id: Number(id)},
+      data: {board: body.board}
+    })
+  }
 }

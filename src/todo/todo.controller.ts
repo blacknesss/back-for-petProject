@@ -29,4 +29,8 @@ export class TodoController {
   async changeComplete(@Param('id') id:string, @Body() body: {complete: boolean}){
     return await this.todoService.changeComplete(body, id)
   }
+  @Patch(':id/board')
+  async changeBoard(@Param('id') id:string, @Body() body: {board: string}){
+    return await this.todoService.changeBoard(body, id)
+  }
 }
