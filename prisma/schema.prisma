@@ -13,4 +13,5 @@ model Todo {
   task String
   complete Boolean
   board String?
+  name String?
 }
