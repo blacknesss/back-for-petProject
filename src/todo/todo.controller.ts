@@ -33,4 +33,9 @@ export class TodoController {
   async changeBoard(@Param('id') id:string, @Body() body: {board: string}){
     return await this.todoService.changeBoard(body, id)
   }
+
+  @Patch(':id/board')
+  async changeName(@Param('id') id:string, @Body() body: {name: string}){
+    return await this.todoService.changeName(body, id)
+  }
 }
